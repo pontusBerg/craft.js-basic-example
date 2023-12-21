@@ -1,7 +1,5 @@
 import { useEditor, Element } from '@craftjs/core';
 import React from 'react';
-
-import { Button } from './user/Button';
 import { Card } from './user/Card';
 import { Container } from './user/Container';
 import { Text } from './user/Text';
