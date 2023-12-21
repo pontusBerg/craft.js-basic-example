@@ -1,14 +1,4 @@
-# Basic demo
-
-This example is the end result of the tutorial [guide](https://craft.js.org/r/docs/guides/basic-tutorial).
-
-Check out the live demo [here](https://craft.js.org/examples/basic/)
-
-## Try it out
-
-```bash
-> git clone https://github.com/prevwong/craft.js/
-> cd craft.js/examples/basic
-> npm install
-> npm start
-```
+# Barebones demo for Craft.js
+- Uses Nextjs 14 with the App router 
+- Remove Material UI as a dependency. 
+- Rewritten in Typescript
