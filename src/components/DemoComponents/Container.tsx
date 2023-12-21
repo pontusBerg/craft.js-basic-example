@@ -1,0 +1,73 @@
+import { useNode } from '@craftjs/core';
+import React from 'react';
+
+
+type Props = {
+  background: string;
+  padding: string;
+  children: React.ReactNode;
+}
+
+export const Container = ({ background, padding, children, ...props }: Props) => {
+  const {
+    connectors: { connect, drag },
+  } = useNode();
+  return (
+    <div
+      {...props}
+      ref={(ref) => connect(drag(ref))}
+      style={{ background, padding: `${padding}px` }}
+    >
+      {children}
+    </div>
+  );
+};
+
+export const ContainerSettings = () => {
+  const {
+    background,
+    padding,
+    actions: { setProp },
+  } = useNode((node) => ({
+    background: node.data.props.background,
+    padding: node.data.props.padding,
+  }));
+
+  return (
+    <div>
+      <form>
+        <label>Background</label>
+        <input
+          type="color"
+          name="background-color"
+          value={background}
+          onChange={(event) => {
+            setProp((props) => (props.background = event.currentTarget.value), 500);
+          }}
+        />
+      </form>
+      <form>
+        <label>Padding</label>
+        <input
+          type="range"
+          defaultValue={padding}
+          onChange={(event) =>
+            setProp((props) => (props.padding = event.currentTarget.value), 500)
+          }
+        />
+      </form>
+    </div>
+  );
+};
+
+export const ContainerDefaultProps = {
+  background: '#ffffff',
+  padding: 0,
+};
+
+Container.craft = {
+  props: ContainerDefaultProps,
+  related: {
+    settings: ContainerSettings,
+  },
+};

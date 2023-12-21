@@ -5,11 +5,11 @@ import React from 'react';
 import { SettingsPanel } from '../components/SettingsPanel';
 import { Toolbox } from '../components/Toolbox';
 import { Topbar } from '../components/Topbar';
-import { Button } from '../components/user/Button';
-import { Card, CardBottom, CardTop } from '../components/user/Card';
-import { Container } from '../components/user/Container';
-import { Text } from '../components/user/Text';
+import { Button } from '../components/DemoComponents/Button';
+import { Container } from '../components/DemoComponents/Container';
+import { Text } from '../components/DemoComponents/Text';
 import Hero from '../components/DemoComponents/Hero';
+import ThreeSection from '../components/DemoComponents/ThreeSection';
 
 export default function App() {
 
@@ -20,13 +20,11 @@ export default function App() {
       </Typography>
       <Editor
         resolver={{
-          Card,
           Button,
           Text,
           Container,
-          CardTop,
-          CardBottom,
-          Hero
+          Hero,
+          ThreeSection
         }}
       >
         <Topbar />

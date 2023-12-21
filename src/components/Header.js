@@ -7,9 +7,9 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 
-import { Button } from './user/Button';
+import { Button } from './DemoComponents/Button';
 import { Card } from './user/Card';
-import { Text } from './user/Text';
+import { Text } from './DemoComponents/Text';
 
 export const Toolbox = () => {
   const { connectors } = useEditor();
@@ -45,12 +45,6 @@ export const Toolbox = () => {
           </MaterialButton>
         </Grid>
         <Grid container direction="column" item>
-          <MaterialButton
-            ref={(ref) => connectors.create(ref, <Card />)}
-            variant="contained"
-          >
-            Card
-          </MaterialButton>
         </Grid>
       </Grid>
     </Box>
