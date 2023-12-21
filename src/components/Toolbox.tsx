@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import { useEditor, Element } from '@craftjs/core';
 import { Container } from './DemoComponents/Container';

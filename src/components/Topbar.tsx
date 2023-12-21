@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 import { useEditor } from '@craftjs/core';
 import copy from 'copy-to-clipboard';

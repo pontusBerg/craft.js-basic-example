@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect } from 'react';
 import { useNode } from '@craftjs/core';
 import ContentEditable, { ContentEditableEvent } from 'react-contenteditable';
