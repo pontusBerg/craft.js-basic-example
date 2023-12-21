@@ -8,14 +8,13 @@ type Props = {
   children: React.ReactNode;
 }
 
-export const Container = ({ background, padding, children, ...props }: Props) => {
+export const Container = ({ background, padding, children }: Props) => {
   const {
     connectors: { connect, drag },
   } = useNode();
   return (
     <div
-      {...props}
-      ref={(ref) => connect(drag(ref))}
+      ref={(ref: HTMLDivElement) => connect(drag(ref))}
       style={{ background, padding: `${padding}px` }}
     >
       {children}
@@ -29,8 +28,8 @@ export const ContainerSettings = () => {
     padding,
     actions: { setProp },
   } = useNode((node) => ({
-    background: node.data.props.background,
-    padding: node.data.props.padding,
+    background: node.data.props['background'],
+    padding: node.data.props['padding'],
   }));
 
   return (
@@ -42,7 +41,7 @@ export const ContainerSettings = () => {
           name="background-color"
           value={background}
           onChange={(event) => {
-            setProp((props) => (props.background = event.currentTarget.value), 500);
+            setProp((props: any) => (props.background = event.currentTarget.value), 500);
           }}
         />
       </form>
@@ -52,7 +51,7 @@ export const ContainerSettings = () => {
           type="range"
           defaultValue={padding}
           onChange={(event) =>
-            setProp((props) => (props.padding = event.currentTarget.value), 500)
+            setProp((props: any) => (props.padding = event.currentTarget.value), 500)
           }
         />
       </form>
@@ -60,14 +59,4 @@ export const ContainerSettings = () => {
   );
 };
 
-export const ContainerDefaultProps = {
-  background: '#ffffff',
-  padding: 0,
-};
 
-Container.craft = {
-  props: ContainerDefaultProps,
-  related: {
-    settings: ContainerSettings,
-  },
-};

@@ -11,7 +11,7 @@ export const Button = ({ children }: Props) => {
   } = useNode();
   return (
     <button
-      ref={(ref) => connect(drag(ref))}
+      ref={(ref: HTMLButtonElement) => connect(drag(ref))}
     >
       {children}
     </button>

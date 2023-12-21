@@ -1,6 +1,5 @@
-import { Editor, Frame, Element } from '@craftjs/core';
-import { Typography, Paper, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
+import { Editor, Frame, Element } from '@craftjs/core';
 
 import { SettingsPanel } from '../components/SettingsPanel';
 import { Toolbox } from '../components/Toolbox';
@@ -14,10 +13,10 @@ import ThreeSection from '../components/DemoComponents/ThreeSection';
 export default function App() {
 
   return (
-    <div style={{ margin: '0 auto', width: '800px' }}>
-      <Typography style={{ margin: '20px 0' }} variant="h5" align="center">
+    <div>
+      <h1>
         Basic Page Editor
-      </Typography>
+      </h1>
       <Editor
         resolver={{
           Button,
@@ -40,9 +39,9 @@ export default function App() {
             <Hero />
           </Element>
         </Frame>
-        <Paper>
+        <div>
           <SettingsPanel />
-        </Paper>
+        </div>
       </Editor>
     </div>
   );
