@@ -1,9 +1,14 @@
-import { useNode } from '@craftjs/core';
-import { Slider, FormControl, FormLabel } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import ContentEditable from 'react-contenteditable';
+import { useNode } from '@craftjs/core';
+import ContentEditable, { ContentEditableEvent } from 'react-contenteditable';
 
-export const Text = ({ text, fontSize, textAlign, ...props }) => {
+
+type Props = {
+  text: string
+  fontSize: number;
+}
+
+export const Text = ({ text, fontSize, ...props }: Props) => {
   const {
     connectors: { connect, drag },
     selected,
@@ -26,21 +31,21 @@ export const Text = ({ text, fontSize, textAlign, ...props }) => {
   return (
     <div
       {...props}
-      ref={(ref) => connect(drag(ref))}
+      ref={(ref: HTMLDivElement) => connect(drag(ref))}
       onClick={() => selected && setEditable(true)}
     >
       <ContentEditable
         html={text}
         disabled={!editable}
-        onChange={(e) =>
+        onChange={(event: ContentEditableEvent) =>
           setProp(
-            (props) =>
-              (props.text = e.target.value.replace(/<\/?[^>]+(>|$)/g, '')),
+            (props: any) =>
+              (props.text = event.currentTarget.value.replace(/<\/?[^>]+(>|$)/g, '')),
             500
           )
         }
         tagName="p"
-        style={{ fontSize: `${fontSize}px`, textAlign }}
+        style={{ fontSize: `${fontSize}px` }}
       />
     </div>
   );
@@ -51,8 +56,8 @@ const TextSettings = () => {
     actions: { setProp },
     fontSize,
   } = useNode((node) => ({
-    text: node.data.props.text,
-    fontSize: node.data.props.fontSize,
+    text: node.data.props["text"],
+    fontSize: node.data.props["fontSize"],
   }));
 
   return (
@@ -65,8 +70,8 @@ const TextSettings = () => {
           step={7}
           min={1}
           max={50}
-          onChange={(event) => {
-            setProp((props) => (props.fontSize = event.currentTarget.value), 1000);
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            setProp((props: any) => (props.fontSize = event.currentTarget.value), 1000);
           }}
         />
       </form>

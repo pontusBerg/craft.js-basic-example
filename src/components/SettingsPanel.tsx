@@ -17,7 +17,7 @@ export const SettingsPanel = () => {
         id: currentNodeId,
         name: currentNode.data && currentNode.data.name,
         settings:
-          currentNode.related && currentNode.related.settings,
+          currentNode.related && currentNode.related["settings"],
         isDeletable: query.node(currentNodeId).isDeletable(),
       };
     }

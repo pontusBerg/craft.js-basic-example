@@ -27,7 +27,7 @@ export const Toolbox = () => {
         </div>
         <div>
           <button
-            ref={(ref) =>
+            ref={(ref: HTMLButtonElement) =>
               connectors.create(ref, <Hero />)
             }
           >
@@ -36,7 +36,7 @@ export const Toolbox = () => {
         </div>
         <div>
           <button
-            ref={(ref: HTMLButtonElement) => connectors.create(ref, <Text text="Hi world" />)}
+            ref={(ref: HTMLButtonElement) => connectors.create(ref, <Text fontSize={24} text="Hi world" />)}
           >
             Text
           </button>
@@ -46,7 +46,9 @@ export const Toolbox = () => {
             ref={(ref: HTMLButtonElement) =>
               connectors.create(
                 ref,
-                <Element canvas is={Container} padding={20} />
+                <Element background='white' canvas is={Container} padding={"20px"} >
+                  Hello
+                </Element>
               )
             }
             data-cy="toolbox-container"
@@ -60,7 +62,7 @@ export const Toolbox = () => {
             ref={(ref: HTMLButtonElement) =>
               connectors.create(
                 ref,
-                <ThreeSection canvas is={Container} padding={20} />
+                <ThreeSection />
               )
             }
             data-cy="toolbox-container"

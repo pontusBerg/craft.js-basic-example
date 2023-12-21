@@ -14,7 +14,7 @@ export const Topbar = () => {
 
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const [stateToLoad, setStateToLoad] = useState(null);
+  const [stateToLoad, setStateToLoad] = useState<string>("");
 
   return (
     <div>
@@ -71,7 +71,7 @@ export const Topbar = () => {
                 <input
                   placeholder='Paste the contents that was copied from the "Copy Current State" button'
                   value={stateToLoad || ''}
-                  onChange={(e) => setStateToLoad(e.target.value)}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => setStateToLoad(event.target.value)}
                 />
               </div>
               <div>
