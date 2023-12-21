@@ -16,7 +16,7 @@ export const Container = ({ background, padding, children }: Props) => {
   return (
     <div
       ref={(ref: HTMLDivElement) => connect(drag(ref))}
-      style={{ background, padding: `${padding}px` }}
+      style={{ border: "1px solid black", minHeight: 200,background, padding: `${padding}px` }}
     >
       {children}
     </div>

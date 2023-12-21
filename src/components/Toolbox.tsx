@@ -11,11 +11,11 @@ export const Toolbox = () => {
   const { connectors } = useEditor();
 
   return (
-    <div>
+    <div className='toolbox'>
       <div
       >
         <div>
-          <div>Drag to add</div>
+          <h3>Drag to add</h3>
         </div>
         <div>
           <button
@@ -48,7 +48,6 @@ export const Toolbox = () => {
               connectors.create(
                 ref,
                 <Element background='white' canvas is={Container} padding={"20px"} >
-                  Hello
                 </Element>
               )
             }

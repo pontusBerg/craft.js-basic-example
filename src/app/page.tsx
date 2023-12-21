@@ -10,6 +10,9 @@ import { Container } from '../components/DemoComponents/Container';
 import { Text } from '../components/DemoComponents/Text';
 import Hero from '../components/DemoComponents/Hero';
 import ThreeSection from '../components/DemoComponents/ThreeSection';
+import '../components/DemoComponents/demo-styles.css'
+
+
 
 export default function App() {
 
@@ -24,20 +27,16 @@ export default function App() {
           Text,
           Container,
           Hero,
-          ThreeSection
+          ThreeSection,
         }}
       >
         <Topbar />
         <Toolbox />
         <Frame>
-          <Element
-            canvas
-            is={Container}
-            padding={"16px"}
-            background="#eeeeee"
-            data-cy="root-container"
-          >
+          <Element is="div" canvas>
+
             <Hero />
+            <Text fontSize={48} text='jafjjsjsjs' />
           </Element>
         </Frame>
         <div>

@@ -1,93 +1,50 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import { useNode } from '@craftjs/core';
-import ContentEditable, { ContentEditableEvent } from 'react-contenteditable';
+import { useNode, useEditor } from '@craftjs/core';
+import React from 'react';
+import ContentEditable from 'react-contenteditable';
 
 
-type Props = {
-  text: string
+export type TextProps = {
   fontSize: number;
-}
-
-export const Text = ({ text, fontSize, ...props }: Props) => {
-  const {
-    connectors: { connect, drag },
-    selected,
-    actions: { setProp },
-  } = useNode((state) => ({
-    selected: state.events.selected,
-    dragged: state.events.dragged,
-  }));
-
-  const [editable, setEditable] = useState(false);
-
-  useEffect(() => {
-    if (selected) {
-      return;
-    }
-
-    setEditable(false);
-  }, [selected]);
-
-  return (
-    <div
-      {...props}
-      ref={(ref: HTMLDivElement) => connect(drag(ref))}
-      onClick={() => selected && setEditable(true)}
-    >
-      <ContentEditable
-        html={text}
-        disabled={!editable}
-        onChange={(event: ContentEditableEvent) =>
-          setProp(
-            (props: any) =>
-              (props.text = event.currentTarget.value.replace(/<\/?[^>]+(>|$)/g, '')),
-            500
-          )
-        }
-        tagName="p"
-        style={{ fontSize: `${fontSize}px` }}
-      />
-    </div>
-  );
+  text: string;
 };
 
-const TextSettings = () => {
+export const Text = ({
+  fontSize,
+  text,
+}: TextProps) => {
   const {
-    actions: { setProp },
-    fontSize,
-  } = useNode((node) => ({
-    text: node.data.props["text"],
-    fontSize: node.data.props["fontSize"],
+    connectors: { connect },
+    setProp,
+  } = useNode();
+  const { enabled } = useEditor((state) => ({
+    enabled: state.options.enabled,
   }));
-
   return (
-    <>
-      <form>
-        <label>Font size</label>
-        <input
-          type="range"
-          value={fontSize || 7}
-          step={7}
-          min={1}
-          max={50}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setProp((props: any) => (props.fontSize = event.currentTarget.value), 1000);
-          }}
-        />
-      </form>
-    </>
+    <ContentEditable
+      innerRef={connect}
+      html={text} // innerHTML of the editable div
+      disabled={!enabled}
+      onChange={(e) => {
+        setProp((prop) => (prop.text = e.target.value), 500);
+      }} // use true to disable editing
+      tagName="h2" // Use a custom HTML tag (uses a div by default)
+      style={{
+        width: '100%',
+        fontSize: `${fontSize}px`,
+      }}
+    />
   );
-};
-
-export const TextDefaultProps = {
-  text: 'Hi',
-  fontSize: 20,
 };
 
 Text.craft = {
-  props: TextDefaultProps,
-  related: {
-    settings: TextSettings,
+  displayName: 'Text',
+  props: {
+    fontSize: '15',
+    textAlign: 'left',
+    fontWeight: '500',
+    color: { r: 92, g: 90, b: 90, a: 1 },
+    margin: [0, 0, 0, 0],
+    shadow: 0,
+    text: 'Text',
   },
 };
