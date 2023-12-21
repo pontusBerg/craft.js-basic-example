@@ -3,38 +3,45 @@ import React from 'react';
 import { Card } from './user/Card';
 import { Container } from './user/Container';
 import { Text } from './user/Text';
+import Hero from './DemoComponents/Hero';
+import { Button } from './user/Button';
 
 export const Toolbox = () => {
   const { connectors } = useEditor();
 
   return (
-    <div px={2} py={2}>
+    <div>
       <div
       >
-        <div pb={2}>
+        <div>
           <div>Drag to add</div>
         </div>
-        <div container direction="column" item>
+        <div>
           <button
             ref={(ref) =>
-              connectors.create(ref, <button>Click me</button>)
+              connectors.create(ref, <Button>Hey there</Button>)
             }
-            variant="contained"
-            data-cy="toolbox-button"
           >
             Button
           </button>
         </div>
-        <div container direction="column" item>
+        <div>
+          <button
+            ref={(ref) =>
+              connectors.create(ref, <Hero />)
+            }
+          >
+            Hero
+          </button>
+        </div>
+        <div>
           <button
             ref={(ref) => connectors.create(ref, <Text text="Hi world" />)}
-            variant="contained"
-            data-cy="toolbox-text"
           >
             Text
           </button>
         </div>
-        <div container direction="column" item>
+        <div>
           <button
             ref={(ref) =>
               connectors.create(
@@ -42,16 +49,14 @@ export const Toolbox = () => {
                 <Element canvas is={Container} padding={20} />
               )
             }
-            variant="contained"
             data-cy="toolbox-container"
           >
             Container
           </button>
         </div>
-        <div container direction="column" item>
+        <div>
           <button
             ref={(ref) => connectors.create(ref, <Card />)}
-            variant="contained"
             data-cy="toolbox-card"
           >
             Card

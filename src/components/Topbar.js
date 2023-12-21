@@ -98,13 +98,6 @@ export const Topbar = () => {
             </div>
           </div>
           )}
-          <button
-            open={!!snackbarMessage}
-            onClose={() => setSnackbarMessage(null)}
-            message={<span>{snackbarMessage}</span>}
-          >
-            Snackbacr
-          </button>
         </div>
       </div>
     </div>
