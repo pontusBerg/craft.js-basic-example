@@ -1,6 +1,5 @@
-import { useEditor, Element } from '@craftjs/core';
 import React from 'react';
-import { Card } from './user/Card';
+import { useEditor, Element } from '@craftjs/core';
 import { Container } from './DemoComponents/Container';
 import { Text } from './DemoComponents/Text';
 import Hero from './DemoComponents/Hero';
@@ -19,7 +18,7 @@ export const Toolbox = () => {
         </div>
         <div>
           <button
-            ref={(ref) =>
+            ref={(ref: HTMLButtonElement) =>
               connectors.create(ref, <Button>Hey there</Button>)
             }
           >
@@ -37,14 +36,14 @@ export const Toolbox = () => {
         </div>
         <div>
           <button
-            ref={(ref) => connectors.create(ref, <Text text="Hi world" />)}
+            ref={(ref: HTMLButtonElement) => connectors.create(ref, <Text text="Hi world" />)}
           >
             Text
           </button>
         </div>
         <div>
           <button
-            ref={(ref) =>
+            ref={(ref: HTMLButtonElement) =>
               connectors.create(
                 ref,
                 <Element canvas is={Container} padding={20} />
@@ -57,8 +56,8 @@ export const Toolbox = () => {
         </div>
 
         <div>
-        <button
-            ref={(ref) =>
+          <button
+            ref={(ref: HTMLButtonElement) =>
               connectors.create(
                 ref,
                 <ThreeSection canvas is={Container} padding={20} />

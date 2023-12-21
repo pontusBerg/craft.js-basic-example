@@ -33,7 +33,7 @@ export default function App() {
           <Element
             canvas
             is={Container}
-            padding={5}
+            padding={"16px"}
             background="#eeeeee"
             data-cy="root-container"
           >
